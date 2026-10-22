@@ -1,0 +1,4 @@
+2026/10/22-13:32:00.838 7754 Creating DB C:\Users\trila\Desktop\MathOptimization\.edge-qa\Default\EdgeCoupons/coupons_data.db since it was missing.
+2026/10/22-13:32:00.847 7754 Reusing MANIFEST C:\Users\trila\Desktop\MathOptimization\.edge-qa\Default\EdgeCoupons/coupons_data.db/MANIFEST-000001
+2026/10/22-13:32:00.854 3684 Level-0 table #5: started
+2026/10/22-13:32:00.860 3684 Level-0 table #5: 683273 bytes OK

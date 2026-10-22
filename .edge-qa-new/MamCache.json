@@ -1,0 +1,11 @@
+{
+  "CacheVersion": 1,
+  "Users": [
+    {
+      "CloudEnvironment": "Public",
+      "Identity": "27552c88-f3ae-4382-8149-b6de69ae47ef",
+      "Preproduction": false,
+      "TenantId": "9b7ce17e-f3e5-4f31-8b6e-146409a8d3fd"
+    }
+  ]
+}

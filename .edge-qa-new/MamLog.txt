@@ -1,0 +1,20 @@
+[2026-10-22T06:39:58.750Z] [INFO] ========================================================================================================================
+[2026-10-22T06:39:58.750Z] [INFO] Initializing MAM Client.
+App: com.microsoft.edge 141.0.3537.71
+SDK: 2.1.367.0
+OS: windows 10.0.26200.9711
+DeviceType: Desktop
+Manufacturer: HP
+Model: HP ProBook 440 G6 Notebook PC
+Telemetry: yes
+Managed device support: disabled
+[2026-10-22T06:39:58.752Z] [INFO] Telemetry session edca8779-4b1a-4641-96bb-33137a424092.
+[2026-10-22T06:39:58.753Z] [INFO] Initializing cache (v1).
+[2026-10-22T06:39:58.771Z] [INFO] Registered UserID:27552c88-f3ae-4382-8149-b6de69ae47ef in the Azure public cloud.
+[2026-10-22T06:39:58.771Z] [INFO] Conditional Access is blocked for UserID:27552c88-f3ae-4382-8149-b6de69ae47ef pre-enrollment; compliance reporting will be accelerated to unblock the user.
+[2026-10-22T06:39:58.771Z] [INFO] Queuing pre-enrollment policy assignment check for UserID:27552c88-f3ae-4382-8149-b6de69ae47ef to run as soon as possible.
+[2026-10-22T06:39:58.771Z] [INFO] Scheduler background thread starting for UserID:27552c88-f3ae-4382-8149-b6de69ae47ef.
+[2026-10-22T06:39:58.780Z] [INFO] Shutting down.
+[2026-10-22T06:39:58.780Z] [INFO] Stopping the task scheduler and canceling any outstanding work items...
+[2026-10-22T06:39:58.781Z] [INFO] Scheduler background thread for UserID:27552c88-f3ae-4382-8149-b6de69ae47ef is exiting after being awoken for shutdown.
+[2026-10-22T06:39:58.781Z] [INFO] Task scheduler has stopped, and all work has been canceled.

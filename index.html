@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="MathOpt Studio — học tối ưu hóa bằng mô phỏng từng bước.">
+  <title>MathOpt Studio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="icon-button mobile-menu" id="menuButton" aria-label="Mở danh mục bài học" aria-expanded="false">☰</button>
+      <a class="brand" href="#" aria-label="MathOpt Studio — trang chủ"><span>MathOpt</span> Studio</a>
+      <p>Học tối ưu hóa bằng trực quan và từng bước</p>
+      <div class="top-actions">
+        <button class="ghost-button" id="theoryButton">Lý thuyết</button>
+        <button class="primary-button" id="runButton"><span class="play-mark">▶</span> Chạy mô phỏng</button>
+      </div>
+    </header>
+
+    <aside class="sidebar" id="sidebar" aria-label="Thư viện thuật toán">
+      <nav>
+        <button class="nav-item" data-module="simplex"><span class="nav-icon">△</span><span>Đơn hình thuận</span></button>
+        <button class="nav-item" data-module="dual_simplex"><span class="nav-icon">▽</span><span>Đơn hình đối ngẫu</span></button>
+        <button class="nav-item" data-module="integer_bb"><span class="nav-icon">ℤ</span><span>Nhánh & Cận nguyên</span></button>
+        <button class="nav-item" data-module="geo_bounded"><span class="nav-icon">◇</span><span>Hình học miền kín</span></button>
+        <button class="nav-item" data-module="geo_unbounded"><span class="nav-icon">↗</span><span>Hình học không bị chặn</span></button>
+        <button class="nav-item active" data-module="transport"><span class="nav-icon">⇄</span><span>Vận tải</span></button>
+        <button class="nav-item" data-module="northwest"><span class="nav-icon">↘</span><span>Góc Tây Bắc</span></button>
+        <button class="nav-item" data-module="modi"><span class="nav-icon">±</span><span>Thế vị MODI</span></button>
+        <button class="nav-item" data-module="assignment"><span class="nav-icon">▦</span><span>Phân công</span></button>
+        <button class="nav-item" data-module="assignment_bb"><span class="nav-icon">⑂</span><span>Phân công Nhánh & Cận</span></button>
+        <button class="nav-item" data-module="dijkstra"><span class="nav-icon">⌁</span><span>Đường đi ngắn nhất</span></button>
+        <button class="nav-item" data-module="tsp_nn"><span class="nav-icon">→</span><span>TSP Lân cận gần nhất</span></button>
+        <button class="nav-item" data-module="tsp_ga"><span class="nav-icon">∞</span><span>TSP Di truyền</span></button>
+      </nav>
+      <div class="roadmap">
+        <p class="nav-heading">Lộ trình tiếp theo</p>
+        <div class="roadmap-item"><span>Luồng cực đại</span><small>Ford–Fulkerson</small></div>
+        <div class="roadmap-item"><span>Cây khung nhỏ nhất</span><small>Kruskal / Prim</small></div>
+        <div class="roadmap-item"><span>Lập lịch dự án</span><small>CPM / PERT</small></div>
+        <div class="roadmap-item"><span>Tối ưu phi tuyến</span><small>Gradient descent</small></div>
+      </div>
+      <div class="sidebar-note">
+        <strong>Mẹo học</strong>
+        <span>Dùng Bước tiếp để tự dự đoán trước khi xem lời giải.</span>
+      </div>
+    </aside>
+
+    <main class="workspace">
+      <section class="lesson-head">
+        <div>
+          <div class="breadcrumb"><span id="familyLabel">Vận tải</span><b>›</b><span id="algorithmLabel">Phương pháp chi phí thấp nhất</span></div>
+          <h1 id="lessonTitle">Bài toán vận tải</h1>
+          <p id="lessonSubtitle">Phân phối hàng hóa sao cho thỏa cung–cầu và giảm tổng chi phí vận chuyển.</p>
+        </div>
+        <button class="ghost-button compact" id="editDataButton">Chỉnh dữ liệu</button>
+      </section>
+
+      <section class="simulation-grid">
+        <div class="visual-panel panel">
+          <div class="panel-head">
+            <div><h2 id="visualTitle">Mạng lưới vận chuyển</h2><p id="visualCaption">Luồng hàng thay đổi theo từng bước</p></div>
+            <div class="legend" id="legend"></div>
+          </div>
+          <div class="canvas-wrap"><canvas id="visualCanvas" aria-label="Minh họa thuật toán"></canvas></div>
+        </div>
+
+        <div class="matrix-panel panel">
+          <div class="panel-head"><div><h2 id="matrixTitle">Ma trận chi phí và phân bổ</h2><p id="matrixCaption">Số lớn: chi phí · Số góc: lượng phân bổ</p></div></div>
+          <div class="matrix-scroll"><table id="matrixTable"></table></div>
+          <div class="metric-row" id="metricRow"></div>
+        </div>
+
+        <aside class="teaching-panel panel">
+          <div class="panel-head"><div><h2>Hướng dẫn từng bước</h2><p>Đọc lý do, không chỉ xem đáp án</p></div></div>
+          <ol class="step-list" id="stepList"></ol>
+          <article class="explanation" id="explanation" aria-live="polite"></article>
+        </aside>
+
+        <div class="timeline-panel panel">
+          <div class="timeline-head"><h2>Tiến trình giải</h2><span id="progressText">Bước 1 / 1</span></div>
+          <div class="timeline" id="timeline"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="playback">
+      <div class="progress-block"><span id="footerStep">Bước 1 / 1</span><div class="progress-track"><span id="progressBar"></span></div></div>
+      <div class="playback-controls">
+        <button class="control-button" id="prevButton" aria-label="Bước trước">|◀ <span>Bước trước</span></button>
+        <button class="play-button" id="playButton" aria-label="Chạy hoặc tạm dừng">▶</button>
+        <button class="control-button" id="nextButton" aria-label="Bước tiếp"><span>Bước tiếp</span> ▶|</button>
+      </div>
+      <label class="speed-control">Tốc độ
+        <select id="speedSelect"><option value="1600">0.75×</option><option value="1000" selected>1×</option><option value="600">1.5×</option><option value="350">2×</option></select>
+      </label>
+    </footer>
+  </div>
+
+  <dialog id="dataDialog">
+    <form method="dialog" class="dialog-card">
+      <div class="dialog-head"><div><h2 id="dialogTitle">Chỉnh dữ liệu</h2><p id="dialogHint">Nhập số không âm, phân cách bằng dấu phẩy.</p></div><button class="icon-button" value="cancel" aria-label="Đóng">×</button></div>
+      <div id="dialogFields"></div>
+      <p class="form-error" id="formError" role="alert"></p>
+      <div class="dialog-actions"><button class="ghost-button" value="cancel">Hủy</button><button class="primary-button" id="applyDataButton" value="default">Áp dụng và giải lại</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="theoryDialog">
+    <article class="dialog-card theory-card">
+      <div class="dialog-head"><div><h2 id="theoryTitle">Cơ sở lý thuyết</h2><p>Điều kiện áp dụng và ý nghĩa của thuật toán</p></div><button class="icon-button" id="closeTheory" aria-label="Đóng">×</button></div>
+      <div id="theoryContent"></div>
+    </article>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
